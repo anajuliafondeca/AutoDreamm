@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoDream</title>
+
+  <link rel="icon" href="favicon.png" type="image/png" sizes="16x16 32x32">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: #fff;
+    }
+
+    header {
+      position: fixed;
+      width: 100%;
+      background-color: #222;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: 600;
+      color: #ff2e2e;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff2e2e;
+    }
+
+    .section {
+      padding: 120px 50px 80px;
+      text-align: center;
+    }
+
+    .inicio {
+      background-color: #000;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    .inicio h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: zoomIn 1.5s ease-in-out;
+      color: #ff2e2e;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0;}
+      to { transform: scale(1); opacity: 1;}
+    }
+
+    .section h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #ff2e2e;
+    }
+
+    .section p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .grid-fotos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .grid-fotos img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .grid-fotos img:hover {
+      transform: scale(1.05);
+    }
+
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .video-container iframe {
+      border-radius: 10px;
+    }
+
+    /* --- FORMULÁRIO --- */
+    fieldset {
+      border: 2px solid #ff2e2e;
+      border-radius: 10px;
+      padding: 20px;
+      width: 50%;
+      margin: 30px auto;
+      text-align: left;
+      background-color: #1a1a1a;
+      box-shadow: 0 0 10px #ff2e2e44;
+    }
+
+    legend {
+      color: #ff2e2e;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background-color: #222;
+      color: #fff;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #ff2e2e;
+      outline: none;
+    }
+
+    button {
+      background-color: #ff2e2e;
+      color: #fff;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff4e4e;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #222;
+      padding: 20px;
+      text-align: center;
+      margin-top: 50px;
+      color: #aaa;
+    }
+
+    @media(max-width:768px){
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .video-container iframe {
+        width: 100%;
+        height: 250px;
+      }
+
+      .inicio h1 {
+        font-size: 40px;
+      }
+
+      .section h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">AutoDream</div>
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#historia">História</a></li>
+        <li><a href="#galeria">Galeria de Modelos</a></li>
+        <li><a href="#videos">Melhores Vídeos</a></li>
+        <li><a href="#formulario">Formulário</a></li>
+        <li><a href="https://www.ferrari.com" target="_blank">Site Externo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="inicio" class="section inicio">
+    <h1>AutoDream</h1>
+    <p>O seu mundo de carros e velocidade!</p>
+  </section>
+
+  <section id="sobre" class="section sobre">
+    <h2>Sobre</h2>
+    <p>AutoDream é um site dedicado aos amantes de carros, com fotos, vídeos e história dos melhores modelos.</p>
+  </section>
+
+  <section id="historia" class="section historia">
+    <h2>História</h2>
+    <p>Descubra a evolução dos carros, desde os primeiros modelos até os supercarros modernos.</p>
+  </section>
+
+  <section id="galeria" class="section galeria">
+    <h2>Galeria de Fotos</h2>
+    <div class="grid-fotos">
+      <img src="https://cdn.pixabay.com/photo/2023/02/09/22/25/porsche-911-gt3-rs-7779707_640.png" alt="Porsche GT3 RS">
+      <img src="https://cdn.pixabay.com/photo/2021/09/25/15/35/ferrari-6655243_640.png" alt="Ferrari vermelha">
+      <img src="https://cdn.pixabay.com/photo/2021/09/25/15/35/audi-6655242_640.png" alt="Audi esportivo">
+      <img src="https://cdn.pixabay.com/photo/2022/01/18/18/13/car-6947854_640.png" alt="Lamborghini amarela">
+    </div>
+  </section>
+
+  <section id="videos" class="section videos">
+    <h2>Melhores Vídeos</h2>
+    <div class="video-container">
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OREbZbvR9oU?si=5g6HjhOlObZMJxP5" title="Vídeo 1 - Carros em ação" frameborder="0" allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/Ax9K8n1_oZ0?si=8xh6i9MpuThAsXKP" title="Vídeo 2 - Corrida épica" frameborder="0" allowfullscreen></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yHe057Htoos?si=PVj-1eGaodXbCQVb" title="Vídeo 3 - Supercarros em alta velocidade" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="formulario" class="section">
+    <h2>Formulário de Envio</h2>
+
+    <form id="meuFormulario">
+      <fieldset>
+        <legend>Shipping Address</legend>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address">
+        <br><br>
+
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city">
+        <br><br>
+
+        <label for="zip-code">ZIP Code:</label>
+        <input type="text" id="zip-code" name="zip-code">
+        <br><br>
+
+        <button type="button" onclick="enviarFormulario()">Enviar</button>
+      </fieldset>
+    </form>
+
+    <p id="mensagem"></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 AutoDream. Todos os direitos reservados. :)</p>
+  </footer>
+
+  <script>
+    function enviarFormulario() {
+      const msg = document.getElementById("mensagem");
+      msg.textContent = "✅ Informações lidas com sucesso!";
+      msg.style.color = "#00ff7f";
+      msg.style.fontWeight = "600";
+      msg.style.marginTop = "15px";
+
+      document.getElementById("meuFormulario").reset();
+
+      setTimeout(() => {
+        msg.textContent = "";
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
